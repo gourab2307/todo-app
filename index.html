@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- Tells the browser this is a modern HTML5 page -->
+<html lang="en">
+  <head>
+    <!-- Use a standard character set so all text displays correctly -->
+    <meta charset="UTF-8" />
+
+    <!-- Makes the page scale properly on phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- The text shown on the browser tab -->
+    <title>To-Do App</title>
+  </head>
+
+  <body>
+    <!-- Everything inside <body> is what you see on the page -->
+
+    <!-- Main heading of the app -->
+    <h1>My To-Do List</h1>
+
+    <!-- A box that groups the input and the button together -->
+    <div>
+      <!-- Text box where the user types a new task.
+           "placeholder" is the grey hint text shown when it's empty.
+           "id" is a unique name so JavaScript can find this element later. -->
+      <input type="text" id="task-input" placeholder="Add a new task..." />
+
+      <!-- Button the user clicks to add the task.
+           It also has an id so JavaScript can find it later. -->
+      <button id="add-button">Add</button>
+    </div>
+
+    <!-- The list where tasks will appear.
+         <ul> means "unordered list" (bullet points).
+         It's empty for now; JavaScript will add items (<li>) into it later. -->
+    <ul id="task-list"></ul>
+  </body>
+</html>
