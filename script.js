@@ -78,6 +78,9 @@ function renderTasks() {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
 
+    // Give the button a class so CSS can style it (see .delete-button).
+    deleteButton.className = "delete-button";
+
     // Clicking Delete removes this task from the array.
     // splice(index, 1) means "remove 1 item starting at this position".
     // Then we save and redraw.

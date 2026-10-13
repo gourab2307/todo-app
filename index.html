@@ -10,41 +10,43 @@
 
     <!-- The text shown on the browser tab -->
     <title>To-Do App</title>
+
+    <!-- Connects the CSS file to this page so the styles apply -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <!-- Everything inside <body> is what you see on the page -->
+    <!-- The "container" is the white card that holds the whole app.
+         CSS uses this class to center it and give it a background. -->
+    <div class="container">
+      <!-- Main heading of the app -->
+      <h1>My To-Do List</h1>
 
-    <!-- Main heading of the app -->
-    <h1>My To-Do List</h1>
+      <!-- Row that holds the input and the Add button side by side.
+           The class lets CSS target it. -->
+      <div class="input-row">
+        <!-- Text box where the user types a new task. -->
+        <input type="text" id="task-input" placeholder="Add a new task..." />
 
-    <!-- A box that groups the input and the button together -->
-    <div>
-      <!-- Text box where the user types a new task.
-           "placeholder" is the grey hint text shown when it's empty.
-           "id" is a unique name so JavaScript can find this element later. -->
-      <input type="text" id="task-input" placeholder="Add a new task..." />
+        <!-- Button the user clicks to add the task. -->
+        <button id="add-button">Add</button>
+      </div>
 
-      <!-- Button the user clicks to add the task.
-           It also has an id so JavaScript can find it later. -->
-      <button id="add-button">Add</button>
+      <!-- Filter buttons: choose which tasks to show.
+           "data-filter" stores a value that JavaScript reads when
+           the button is clicked. "active" marks the selected one. -->
+      <div id="filters">
+        <button class="filter-button active" data-filter="all">All</button>
+        <button class="filter-button" data-filter="active">Active</button>
+        <button class="filter-button" data-filter="completed">Completed</button>
+      </div>
+
+      <!-- The list where tasks will appear. JavaScript adds items here. -->
+      <ul id="task-list"></ul>
     </div>
 
-    <!-- Filter buttons: choose which tasks to show.
-         "data-filter" stores a value that JavaScript reads when
-         the button is clicked. "active" marks the selected one. -->
-    <div id="filters">
-      <button class="filter-button active" data-filter="all">All</button>
-      <button class="filter-button" data-filter="active">Active</button>
-      <button class="filter-button" data-filter="completed">Completed</button>
-    </div>
-
-    <!-- The list where tasks will appear.
-         <ul> means "unordered list" (bullet points).
-         It's empty for now; JavaScript will add items (<li>) into it later. -->
-    <ul id="task-list"></ul>
-
+    <!-- Connects the JavaScript file. It goes at the bottom so the
+         elements above already exist when the script runs. -->
     <script src="script.js"></script>
   </body>
 </html>
