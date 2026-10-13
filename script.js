@@ -10,6 +10,10 @@ const taskList = document.getElementById("task-list");
 // with the saved one when the page loads.
 let tasks = [];
 
+// Remembers which filter is selected: "all", "active" or "completed".
+// This is NOT saved in localStorage, so it resets to "all" on refresh.
+let currentFilter = "all";
+
 // Step 3: Save the tasks in the browser.
 // localStorage is a small storage space inside the browser that survives
 // refreshes. It can only store text, so JSON.stringify turns our array
@@ -40,6 +44,17 @@ function renderTasks() {
   // forEach runs the code below once for every task in the array.
   // "task" is the current task, "index" is its position (0, 1, 2...).
   tasks.forEach(function (task, index) {
+    // Skip tasks that don't match the selected filter.
+    // "return" here only skips THIS task and moves on to the next one.
+    // We still loop over the full array so "index" stays correct for
+    // delete, even when some tasks are hidden.
+    if (currentFilter === "active" && task.done) {
+      return;
+    }
+    if (currentFilter === "completed" && !task.done) {
+      return;
+    }
+
     const listItem = document.createElement("li");
 
     // The task text, in its own span.
@@ -103,6 +118,29 @@ function addTask() {
 // Step 7: Connect the Add button to the addTask function.
 addButton.addEventListener("click", addTask);
 
-// Step 8: When the page first opens, load saved tasks and draw them.
+// Step 8: Make the filter buttons work.
+// querySelectorAll finds ALL elements with the class "filter-button".
+const filterButtons = document.querySelectorAll(".filter-button");
+
+// Loop over each filter button and give it a click listener.
+filterButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // Read the value from the button's data-filter attribute.
+    currentFilter = button.dataset.filter;
+
+    // Move the "active" class to the button that was just clicked,
+    // so it looks selected. First remove it from every button...
+    filterButtons.forEach(function (b) {
+      b.classList.remove("active");
+    });
+    // ...then add it to the clicked one.
+    button.classList.add("active");
+
+    // Redraw the list using the new filter.
+    renderTasks();
+  });
+});
+
+// Step 9: When the page first opens, load saved tasks and draw them.
 loadTasks();
 renderTasks();

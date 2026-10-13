@@ -1,3 +1,10 @@
+/* The currently selected filter button.
+   ".filter-button.active" (no space) means an element that has BOTH classes. */
+.filter-button.active {
+  font-weight: bold;
+  background-color: rgb(17, 175, 223);
+}
+
 /* A task that has been marked done.
    The dot means "class", so this applies to any element with class="done".
    JavaScript adds and removes this class when you click a task. */
