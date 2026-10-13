@@ -1,0 +1,10 @@
+/* A task that has been marked done.
+   The dot means "class", so this applies to any element with class="done".
+   JavaScript adds and removes this class when you click a task. */
+.done {
+  /* Draws a line through the text */
+  text-decoration: line-through;
+
+  /* Makes the text grey so finished tasks look faded */
+  color: blue;
+}

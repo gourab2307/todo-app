@@ -27,6 +27,11 @@ function addTask() {
   const taskSpan = document.createElement("span");
   taskSpan.textContent = taskText;
 
+  // When the task text is clicked, mark it done (or undo it).
+  taskSpan.addEventListener("click", function () {
+  taskSpan.classList.toggle("done");
+ });
+
   // Create a delete button for this task.
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
