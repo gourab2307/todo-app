@@ -21,8 +21,26 @@ function addTask() {
   // It isn't on the page yet.
   const listItem = document.createElement("li");
 
-  // Put the user's text inside the list item.
-  listItem.textContent = taskText;
+  // Put the user's text inside its own <span>.
+  // A span is a small wrapper, so the text and the delete button
+  // can sit side by side inside the same list item.
+  const taskSpan = document.createElement("span");
+  taskSpan.textContent = taskText;
+
+  // Create a delete button for this task.
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+
+  // When this delete button is clicked, remove its list item.
+  // This small function is created fresh for every task, so each
+  // button remembers which list item belongs to it.
+  deleteButton.addEventListener("click", function () {
+    listItem.remove();
+  });
+
+  // Put the text and the delete button inside the list item.
+  listItem.appendChild(taskSpan);
+  listItem.appendChild(deleteButton);
 
   // Add the list item into the <ul> so it now shows up on the page.
   taskList.appendChild(listItem);
